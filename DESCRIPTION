@@ -6,6 +6,9 @@ Date: 2017-06-23
 Author: Your Name
 Maintainer: Your Name <your@email.com>
 Description: One paragraph description of what the package does as one or more full sentences.
+Depends:
+    rJava (>= 0.5-0)
+SystemRequirements: Java (>= 1.5)
 License: GPL (>= 2)
 Imports: Rcpp (>= 0.12.7)
 LinkingTo: Rcpp

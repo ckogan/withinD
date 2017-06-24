@@ -27,23 +27,22 @@ LogicalVector within_d(NumericVector id, NumericVector x, NumericVector y, doubl
   const double small_top = y_ref + dsq;
   LogicalVector inside_circle(n);
   for(int i=0; i<n; ++i){
-    // double yi = y[i];
-    // double xi = x[i];
-    // if(!(xi > big_right | xi < big_left | yi < big_bottom | yi > big_top)){
-    //   // Point not outside big square
-    //   if(!(xi < small_right & xi > small_left & yi > small_bottom & yi < small_top)) {
-    //     double rx = xi - x_ref;
-    //     double ry = yi - y_ref;
-    //     if(rx*rx+ ry*ry < d*d) {
-    //       inside_circle[i] = true;
-    //     }
-    //   } else {
-    //     inside_circle[i] = true;
-    //   }
-    // }
+  double yi = y[i];
+  double xi = x[i];
+  if(!(xi > big_right | xi < big_left | yi < big_bottom | yi > big_top)){
+    // Point not outside big square
+    if(!(xi < small_right & xi > small_left & yi > small_bottom & yi < small_top)) {
+      double rx = xi - x_ref;
+      double ry = yi - y_ref;
+      if(rx*rx+ ry*ry < d*d) {
+        inside_circle[i] = true;
+      }
+    } else {
+      inside_circle[i] = true;
+    }
   }
-  //return inside_circle;
-  return LogicalVector::create(NA_LOGICAL);
+  }
+  return inside_circle;
 }
 
 
@@ -55,7 +54,8 @@ LogicalVector within_d(NumericVector id, NumericVector x, NumericVector y, doubl
 /*** R
 library(dplyr)
 library(ggplot2)
-n <- 10000
+set.seed(101)
+n <- 100
 x <- rnorm(n)
 y <- rnorm(n)
 id <- 1:n

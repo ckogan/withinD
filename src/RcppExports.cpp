@@ -5,16 +5,6 @@
 
 using namespace Rcpp;
 
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP withinD_rcpp_hello_world() {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
-    return rcpp_result_gen;
-END_RCPP
-}
 // within_d
 LogicalVector within_d(NumericVector id, NumericVector x, NumericVector y, double x_ref, double y_ref, double max_distance);
 RcppExport SEXP withinD_within_d(SEXP idSEXP, SEXP xSEXP, SEXP ySEXP, SEXP x_refSEXP, SEXP y_refSEXP, SEXP max_distanceSEXP) {
